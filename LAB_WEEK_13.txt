@@ -1,0 +1,18 @@
+Assignment - Week 13 - LAB
+Leonard Augusto Bantoro
+
+Answer these questions based on the tutorial:
+1. Why is MVVM important? Which files represent Model, which files represent View, and which files represent ViewModel?
+MVVM penting karena pola ini memisahkan tampilan aplikasi (View) dari logic dan pengolahan data (Model), sehingga aplikasi menjadi lebih mudah dikembangkan, diuji, dan dipelihara. Dengan MVVM, perubahan UI tidak memengaruhi bagian logic, dan sebaliknya. Dalam proyek ini, bagian Model diwakili oleh Movie.kt, MovieDao.kt, dan MovieDatabase.kt yang mengatur data dan penyimpanannya. Bagian View terdiri dari activity_main.xml dan MainActivity.kt yang berhubungan langsung dengan tampilan dan interaksi pengguna. Sementara itu, MovieViewModel.kt berfungsi sebagai ViewModel yang mengatur alur data dari Repository ke View.
+
+2. In Part 1, you implemented Data Binding, why is this more efficient than using the normal method?
+Data Binding digunakan karena jauh lebih efisien dibandingkan cara normal yang menggunakan findViewById. Dengan Data Binding, View dapat terhubung langsung dengan LiveData atau StateFlow di ViewModel tanpa perlu update manual. Hal ini membuat UI dapat otomatis berubah ketika data berubah, mengurangi kode boilerplate, meminimalkan error, dan membuat kode lebih bersih serta mudah dipahami.
+
+3. In Part 2, you implemented the Singleton Pattern, why is this important?
+Pola Singleton digunakan pada pembuatan database Room. Singleton memastikan bahwa hanya ada satu instance database yang digunakan di seluruh aplikasi. Ini penting karena membuat database berkali-kali sangat berat dan dapat menyebabkan konflik antar-thread. Dengan Singleton, data tetap konsisten, aplikasi lebih efisien, dan risiko error seperti race condition dapat dihindari.
+
+4. In Part 2 & 3, you implemented the Repository Pattern, why is this important?
+Repository Pattern digunakan untuk mengatur sumber data antara API dan database lokal. Repository memastikan aplikasi memiliki satu sumber kebenaran data, dapat bekerja meskipun sedang offline, serta memisahkan pengambilan data dari tampilan. Dengan pola ini, ViewModel tidak perlu tahu apakah data berasal dari API atau dari Room; semuanya diatur di Repository, sehingga struktur aplikasi menjadi jauh lebih rapi.
+
+5. In part 3, you implemented the Worker Manager, is there another way to refresh your database with the latest data other than using Worker?
+WorkManager digunakan untuk menjadwalkan pembaruan data secara otomatis setiap interval waktu tertentu. Selain WorkManager, terdapat beberapa cara lain untuk memperbarui database dengan data terbaru, seperti melakukan refresh manual oleh pengguna, melakukan refresh setiap kali aplikasi dibuka, menggunakan AlarmManager, atau menggunakan Service. Namun, WorkManager tetap menjadi pilihan terbaik karena paling stabil, hemat energi, dan tetap berjalan meskipun aplikasi ditutup atau perangkat direstart.
