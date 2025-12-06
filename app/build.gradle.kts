@@ -4,6 +4,8 @@ plugins {
     kotlin("kapt")
 }
 
+
+
 android {
     namespace = "com.example.test_lab_week_12"
     compileSdk = 36
@@ -19,6 +21,10 @@ android {
     }
 
     buildTypes {
+        buildFeatures{
+            dataBinding = true
+            viewBinding = true
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
